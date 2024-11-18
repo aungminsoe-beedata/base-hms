@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_medical_patient_inherit" model="ir.ui.view">
+        <field name="name">medical.patient.form.inherit</field>
+        <field name="model">medical.patient</field>
+        <field name="inherit_id" ref="basic_hms.medical_patients_form_view"/>
+        
+        <field name="arch" type="xml">
+
+                      <!-- Add New Note book-->
+            <xpath expr="//sheet/notebook/page[1]" position="before">
+                <page string="Patient Hospitalization">
+                    <field name="patient_hosptialization" readonly='1' widget="one2many_list"/>
+                </page>
+                <page string="Investiagtion Summary">
+                    <field name="investigation_ids"
+                                    readonly='1' widget="one2many_list" />
+                </page>
+            </xpath>
+
+
+            <!-- Add 'father_name' field after 'date_of_birth' -->
+            <xpath expr="//field[@name='date_of_birth']" position="after">
+                <field name="father_name"/>
+                <field name="state"/>
+            </xpath>
+            
+            <!-- Add a button box inside the sheet tag -->
+            <xpath expr="//sheet" position="inside">
+                <div class="oe_button_box" name="button_box">
+                    <!-- <button type="action" 
+                            name="%(base_hms_customization.action_medical_inpatient_registration_view)d" 
+                            icon="fa-sticky-note-o" 
+                            class="oe_stat_button"
+                            context="{'search_default_patient_id': patient_id}">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value"><field name="investigation_count"/></span>
+                            <span class="o_stat_text">Investigation Summary</span>
+                        </div>
+                    </button>
+                    <button type="action" 
+                            name="%(base_hms_customization.action_operation_note__view)d" 
+                            icon="fa-sticky-note-o" 
+                            class="oe_stat_button"
+                            context="{'search_default_patient_id': active_id}">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value"><field name="operation_notes_count"/></span>
+                            <span class="o_stat_text">Operation Notes</span>
+                        </div>
+                    </button> -->
+
+                    
+                        <button class="oe_stat_button" type="object" icon="fa-plus-square"
+                                name="action_get_investigation">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_value"><field name="investigation_count"/></span>
+                                    <span class="o_stat_text">Investigation Summary</span>
+                                </div>
+                        </button>
+                        <button class="oe_stat_button" type="object" icon="fa-hospital-o"
+                                name="action_get_operations_notes">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_value"><field name="operation_notes_count"/></span>
+                                    <span class="o_stat_text">Operation Notes</span>
+                                </div>
+                        </button>
+                    
+                    
+
+            
+                </div>
+            </xpath>
+
+
+  
+        </field>
+    </record>
+</odoo>

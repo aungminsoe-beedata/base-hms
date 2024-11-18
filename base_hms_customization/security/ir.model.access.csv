@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_medical_investigation,medical.investigation,model_medical_investigation,base.group_user,1,1,1,1
+access_investigation_info,investigation.info,model_investigation_info,base.group_user,1,1,1,1
+access_operation_note,operation.note,model_operation_note,base.group_user,1,1,1,1
+access_hms_room_room,hms_room.room,model_hms_room_room,base.group_user,1,1,1,1
+
+access_referral_payment_wizard,referral.payment.wizard,model_referral_payment_wizard,,1,1,1,1
+

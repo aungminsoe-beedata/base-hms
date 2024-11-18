@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- medical investigation view-->
+    <record id="action_medical_inpatient_registration_view" model="ir.actions.act_window">
+        <field name="name">Patient Investigation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">medical.investigation</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_ss_hospitalization_administration_one" 
+                name="Investigation"
+                parent="basic_hms.menu_inpatient_administration" 
+                action="base_hms_customization.action_medical_inpatient_registration_view"
+                sequence="1" />
+    <!-- medical operation notes view-->
+    <record id="action_operation_note__view" model="ir.actions.act_window">
+            <field name="name">Patient Operation Note</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">operation.note</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_ss_hospitalization_administration_two" 
+                name="Operation Notes"
+                parent="basic_hms.menu_inpatient_administration" 
+                action="base_hms_customization.action_operation_note__view"
+                sequence="2" />
+
+    <!-- Patients Rooms view-->
+
+    <record id="action_view_hms_room_room" model="ir.actions.act_window">
+        <field name="name">Room</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hms_room.room</field>
+
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+    <menuitem id="menu_room" name="Room"
+        parent="basic_hms.main_menu_configartion" sequence='15' action="action_view_hms_room_room"/>
+
+</odoo>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="medical_inpatient_investigation_form_view" model="ir.ui.view">
+            <field name="name">medical.inpatient.investigation.form.view</field>
+            <field name="model">medical.investigation</field>
+            <field name="arch" type="xml">
+                <form string="Inpatient Registration Information">
+                    
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_print_investigation" type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-download"
+                                    string="Print"/>
+                        </div>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="patient_id" />
+                            </div>
+                            <h1>
+                                <field style="width: 30%%" name="patient_id"
+                                    default_focus="1" placeholder="Patient Name"
+                                    context="{'default_is_patient': 1,'default_is_person': 1}"
+                                     />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                              <field name="inpatient_reg_id" string="In patient code" required="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Investigation Information">
+                          <field
+                             name="invest_info_ids"
+                             widget="section_and_note_one2many"
+                             mode="tree,kanban">
+                             <form
+                                 string="Informations">
+                             <group>
+                                 <group><field name="date"/></group>
+                             </group>
+                             <group>
+                                 
+                               <group>
+                                 <field name="hb"/>
+                                 <field name="mcv"/>
+                                 <field name="wbc"/>
+                                 <field name="anc"/>
+                                 <field name="plt"/>
+                                 <field name="crp"/>
+                                 <field name="esr" />
+                                 <field name="urea"/>
+                                 <field name="creatinine"/>
+                                 <field name="egfr"/>
+                                 <field name="na"/>
+                                 <field name="k"/>
+                                 <field name="hco3"/>
+                                 <field name="t_dp"/>
+                                 <field name="albumin"/>
+                             </group>
+                             <group>
+                                 
+                                 <field name="ast"/>
+                                 <field name="alt" />
+                                 <field name="alk_phos"/>
+                                 <field name="pt"/>
+                                 <field name="inr"/>
+                                 <field name="aptt"/>
+                                 <field name="rbs"/>
+                                 <field name="hba1_c"/>
+                                 <field name="t_3" />
+                                 <field name="t_4" />
+                                 <field name="tsh"/>
+                                 <field name="cho"/>
+                                 <field name="tg"/>
+                                 <field name="hdl"/>
+                                 <field name="ldl"/>
+                             </group>
+                             </group>
+
+
+                             </form>
+                         
+                             
+                         </field>
+                         <group>
+                             <separator colspan="4"
+                             string="ECG" />
+                             <newline />
+                             <field colspan="6" name="ecg"
+                             nolabel="1" />
+                         </group>
+                         <group>
+                             <separator colspan="4"
+                             string="CXR" />
+                             <newline />
+                             <field colspan="6" name="cxr"
+                             nolabel="1" />
+                         </group>
+                         <group>
+                             <separator colspan="4"
+                             string="USG" />
+                             <newline />
+                             <field colspan="6" name="usg"
+                             nolabel="1" />
+                         </group>
+                         <group>
+                             <separator colspan="4"
+                             string="Others" />
+                             <newline />
+                             <field colspan="6" name="inv_others"
+                             nolabel="1" />
+                         </group>
+                        
+                     </page>
+                 </notebook>
+
+                    </sheet>
+                </form>
+
+            </field>
+        </record>
+    </odoo>

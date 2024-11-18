@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_all_room_kanban" model="ir.ui.view">
+        <field name="name">hms.room.room.kanban</field>
+       <field name="model">hms_room.room</field>
+       <field name="arch" type="xml">
+           <kanban>
+               <field name="name"/>
+               <field name="status"/>
+               <templates>
+                   <t t-name="kanban-box">
+                       <t t-if="record.status.raw_value == 'availiable'">
+                            <div style="width:15mm; height:15mm; align-content: center; border-top: 5px solid green;" >
+                               <strong >
+                                <field name="name" style="color:green;"/>
+                            </strong>
+                           </div>
+                       </t>
+                        <t t-if="record.status.raw_value == 'occupies'">
+                            <div style="width:15mm; height:15mm; align-content: center; border-top: 5px solid red;" >
+                               <strong><field name="name" style="color:red;"/></strong>
+                           </div>
+                       </t>
+                   </t>
+
+               </templates>
+           </kanban>
+       </field>
+   </record>
+
+</odoo>

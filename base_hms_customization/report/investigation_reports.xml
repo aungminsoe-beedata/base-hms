@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="patient_investigation_pdf_reports" model="ir.actions.report">
+        <field name="name">Patient Investigation PDF Report</field>
+        <field name="model">medical.investigation</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">base_hms_customization.patients_investigation_reports</field>
+        <field name="report_file">base_hms_customization.patients_investigation_reports</field>
+        <field name="binding_model_id" ref="model_medical_investigation"/>
+        <field name="paperformat_id" ref="base_hms_customization.paperformat_euro"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    
+    <template id="patients_investigation_reports">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.basic_layout">
+                    <h2>Hospital Name</h2>
+                    
+                    <!-- header information -->
+                    <div>
+                        <div style="text-align: left; margin-bottom: 20px;">
+                            <label><b>NAME:</b> <span t-field="doc.patient_id" style="color: #2596be; font-weight: bold;"/></label><br/>
+                            <label><b>AGE:</b> <span t-field="doc.patient_id.age"/></label><br/>
+                            <label><b>SEX:</b> <span t-field="doc.patient_id.sex"/></label><br/>
+                            <label><b>REG No:</b><span t-field="doc.patient_id.name"/></label><br/>
+                        </div>
+                    </div>
+                    
+                   
+                    <div>
+                        <table class="table table-sm table-bordered" style="width:100%; text-align:left; margin-top: 20px;">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>HB</th>
+                                    <th>MCV</th>
+                                    <th>WBC</th>
+                                    <th>ANC</th>
+                                    <th>PLT</th>
+                                    <th>CRP</th>
+                                    <th>ESR</th>
+                                    <th>Urea</th>
+                                    <th>Creatinine</th>
+                                    <th>eGFR</th>
+                                    <th>Na</th>
+                                    <th>K</th>
+                                    <th>HCO3</th>
+                                    <th>T/DP</th>
+                                    <th>Albumin</th>
+                                    <th>AST</th>
+                                    <th>ALT</th>
+                                    <th>Alk Phos</th>
+                                    <th>PT</th>
+                                    <th>INR</th>
+                                    <th>APTT</th>
+                                    <th>RBS</th>
+                                    <th>HbA 1 C</th>
+                                    <th>T3</th>
+                                    <th>T4</th>
+                                    <th>TSH</th>
+                                    <th>Cho</th>
+                                    <th>TG</th>
+                                    <th>HDL</th>
+                                    <th>LDL</th>
+                                </tr>
+                                
+                            </thead>
+                            <tbody>
+                              
+                                <t t-foreach="doc.invest_info_ids" t-as="info">
+                                    <tr>
+                                        <td>
+                                            <span t-field="info.date"/>
+                                        </td>
+                                        
+                                            <td><span t-field="info.hb"/></td>
+                                            <td><span t-field="info.mcv"/></td>
+                                            <td><span t-field="info.wbc"/></td>
+                                            <td><span t-field="info.anc"/></td>
+                                            <td><span t-field="info.plt"/></td>
+                                            <td><span t-field="info.crp"/></td>
+                                            <td><span t-field="info.esr"/></td>
+                                            <td><span t-field="info.urea"/></td>
+                                            <td><span t-field="info.creatinine"/></td>
+                                            <td><span t-field="info.egfr"/></td>
+                                            <td><span t-field="info.na"/></td>
+                                            <td><span t-field="info.k"/></td>
+                                            <td><span t-field="info.hco3"/></td>
+                                            <td><span t-field="info.t_dp"/></td>
+                                            <td><span t-field="info.albumin"/></td>
+                                            <td><span t-field="info.ast"/></td>
+                                            <td><span t-field="info.alt"/></td>
+                                            <td><span t-field="info.alk_phos"/></td>
+                                            <td><span t-field="info.pt"/></td>
+                                            <td><span t-field="info.inr"/></td>
+                                            <td><span t-field="info.aptt"/></td>
+                                            <td><span t-field="info.rbs"/></td>
+                                            <td><span t-field="info.hba1_c"/></td>
+                                            <td><span t-field="info.t_3"/></td>
+                                            <td><span t-field="info.t_4"/></td>
+                                            <td><span t-field="info.tsh"/></td>
+                                            <td><span t-field="info.cho"/></td>
+                                            <td><span t-field="info.tg"/></td>
+                                            <td><span t-field="info.hdl"/></td>
+                                            <td><span t-field="info.ldl"/></td>
+                                       
+                                        
+                                    </tr>
+                                </t>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <div style="text-align: left; margin-bottom: 20px;">
+                            <label><b>ECG:</b> <span t-field="doc.ecg" style="color: #2596be; font-weight: bold;"/></label><br/><br></br>
+                            <label><b>CXR:</b> <span t-field="doc.cxr" style="color: #2596be; font-weight: bold;"/></label><br/><br></br>
+                            <label><b>USG:</b> <span t-field="doc.usg" style="color: #2596be; font-weight: bold;"/></label><br/><br></br>
+                            <label><b>Others:</b><span t-field="doc.inv_others" style="color: #2596be; font-weight: bold;"/></label><br/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    
+
+</odoo>

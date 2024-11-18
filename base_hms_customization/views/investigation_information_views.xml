@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="investigation_info_tree_view" model="ir.ui.view">
+            <field name="name">minvestigation.info.tree.view</field>
+            <field name="model">investigation.info</field>
+            <field name="arch" type="xml">
+                <tree string="Investigation Info">
+                    <field name="date" />
+                    
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_investigation_info" model="ir.actions.act_window">
+            <field name="name">Information</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">investigation.info</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+</odoo>

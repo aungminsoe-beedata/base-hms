@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="operation_note_tree">
+        <field name="name">Operation Note Tree</field>
+        <field name="model">operation.note</field>
+        <field name="arch" type="xml">
+            <tree string="Operation Notes">
+                <field name="patient_id"/>
+                <field name="create_date"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

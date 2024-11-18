@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="referral_payment_wizard_form" model="ir.ui.view">
+            <field name="name">referral.payment.wizard.form</field>
+            <field name="model">referral.payment.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="journal_id" readonly="1" invisible="1"/>
+                            <field name="currency_id" readonly="1" invisible="1"/>
+                        </group>
+                    </group>
+                   
+                    <label for="pos_order_line_ids" string="POS Referral"/>
+                    <field name="pos_order_line_ids" readonly="1">
+                        <tree>
+                            <!-- <field name="date"/> -->
+                            <field name="full_product_name" string="Description"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="price_subtotal_incl" widget="monetary"/>
+                        </tree>
+                    </field>
+
+                    <label for="account_move_line_ids" string="Sales Referral"/>
+                    <field name="account_move_line_ids" readonly="1">
+                        <tree>
+                            <!-- <field name="date"/> -->
+                            <field name="name" string="Description"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="price_subtotal" widget="monetary"/>
+                        </tree>
+                    </field>
+                    <group name="note_group" col="6" class="mt-2 mt-md-0">
+                        <group colspan="4">
+                        </group>
+                        <group class="oe_subtotal_footer oe_right" colspan="2" name="total">
+                            <label for="total_referral_amount" string="Total"/>
+                            <h2><field name="total_referral_amount" widget="monetary" colspan="2"/></h2>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Generate Bill" name="create_payment" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="referral_payment_wizard_action" model="ir.actions.act_window">
+            <field name="name">Referral Payment</field>
+            <field name="res_model">referral.payment.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

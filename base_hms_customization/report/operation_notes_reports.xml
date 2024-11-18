@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="patient_operation_notes_pdf_reports" model="ir.actions.report">
+        <field name="name">Patient Operation Notes PDF Report</field>
+        <field name="model">operation.note</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">base_hms_customization.patients_operation_notes_reports</field>
+        <field name="report_file">base_hms_customization.patients_operation_notes_reports</field>
+        <field name="binding_model_id" ref="model_operation_note"/>
+        <field name="paperformat_id" ref="base_hms_customization.paperformat_euro"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    
+    <template id="patients_operation_notes_reports">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.basic_layout">
+                    <h2>Hospital Name</h2>
+                    <p>Operation Notes</p>   
+                                    
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="padding-bottom: 10px;"><b>NAME :</b></td>
+                                <td style="padding-bottom: 10px; color: #2596be; font-weight: bold;"><span t-field="doc.patient_id"/></td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 10px;"><b>Father Name :</b></td>
+                                <td style="padding-bottom: 10px;"><span t-field="doc.patient_id.father_name"/></td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 10px;"><b>AGE :</b></td>
+                                <td style="padding-bottom: 10px;"><span t-field="doc.patient_id.age"/></td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 10px;"><b>SEX :</b></td>
+                                <td style="padding-bottom: 10px;"><span t-field="doc.patient_id.sex"/></td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 10px;"><b>REG No :</b></td>
+                                <td style="padding-bottom: 10px;"><span t-field="doc.patient_id.name"/></td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 10px;"><b>Date :</b></td>
+                                <td style="padding-bottom: 10px;"><span t-field="doc.create_date"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: 2px solid green;">
+                            <tr>
+                                <td style="padding-bottom: 10px; border: 1px solid green;"><b>Surgeon :</b></td>
+                                <td style="padding-bottom: 10px; border: 1px solid green;">
+                                    <span t-field="doc.surgeon"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 10px; border: 1px solid green;"><b>Anaesthetist :</b></td>
+                                <td style="padding-bottom: 10px; border: 1px solid green;">
+                                    <span t-field="doc.anaesthetist"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 10px; border: 1px solid green;"><b>Paediatrician :</b></td>
+                                <td style="padding-bottom: 10px; border: 1px solid green;">
+                                    <span t-field="doc.paediatrician"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 10px; border: 1px solid green;"><b>1st Assistant :</b></td>
+                                <td style="padding-bottom: 10px; border: 1px solid green;">
+                                    <span t-field="doc.assistant_1st"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 10px; border: 1px solid green;"><b>2nd Assistant :</b></td>
+                                <td style="padding-bottom: 10px; border: 1px solid green;">
+                                    <span t-field="doc.assistant_2nd"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 10px; border: 1px solid green;"><b>Instrument Nurse :</b></td>
+                                <td style="padding-bottom: 10px; border: 1px solid green;">
+                                    <span t-field="doc.instrument_nurse"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div>
+                        <br></br>
+                        <p>INFORMATIONS</p>
+                        <table style="width: 100%; border-collapse: collapse;" >
+                            <tr>
+                                <td style="padding-bottom: 2px;"><b>DIAGNOSIS :</b></td>
+                                <td style="padding-bottom: 2px;"><span t-field="doc.diagnosis"/></td>
+                            </tr>
+                            <tr>
+                                <td style="padding-buttom:2px"><b>TYPES OF OPERATION PERFORMED</b></td>
+                                <td style="padding-bottom: 2px;"><span t-field="doc.operation_types"/></td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 2px;"><b>PROCEDURE AND FINDINGS :</b></td>
+                                <td style="padding-bottom: 2px;"><span t-field="doc.operation_types"/></td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 2px;"><b>ADVICE:</b></td>
+                                <td style="padding-bottom: 2px;"><span t-field="doc.advise"/></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                     <!-- New Doctor Name and Signature section on the right -->
+                     <div style="width: 100%; display: flex; justify-content: flex-end; margin-top: 20px;">
+                        <table style="width: 40%; text-align: right;">
+                            <tr>
+                                <td style="padding-top: 20px;">
+                                    <b>Name</b> <span style="border-bottom: 1px solid #000; padding-left: 150px;"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-top: 20px;">
+                                    <b>Sign</b> <span style="border-bottom: 1px solid #000; padding-left: 150px;"></span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+    
+                    
+                    
+                   
+                </t>
+            </t>
+        </t>
+    </template>
+    
+    
+
+</odoo>

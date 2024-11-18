@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ 
+        <record id="medical_physician_form_view_inherit" model="ir.ui.view">
+            <field name="name">medical.physician.form.view.inherit</field>
+            <field name="model">medical.physician</field>
+            <field name="inherit_id" ref="basic_hms.medical_physician_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[1]/group/field[@name='partner_id']" position="after">
+                    <field name="phone" string="Phone Number" placeholder="Enter Doctor Phone Number"/>
+                </xpath>
+
+                <xpath expr="//sheet" position="before">
+                   <header>
+                    <button name="action_compute_referral"
+                            string="Compute Referral"
+                            class="oe_highlight"
+                            type="object"/>
+                   </header>
+                </xpath>
+
+
+                <xpath expr="//sheet" position="inside">
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" icon="fa-credit-card"
+                        name="action_view_vendor_bill">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value">
+                                <field name="referred_bill_count" widget="statinfo" nolabel="1" class="mr4"/>
+                            </span>
+                            <span class="o_stat_text">Bills</span>
+                        </div>
+                </button>
+                    </div>
+                 </xpath>
+            </field>
+        </record>
+</odoo>

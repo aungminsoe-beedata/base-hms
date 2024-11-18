@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_medical_patient_tree_view_inherit" model="ir.ui.view">
+        <field name="name">medical.patient.tree.view.inherit</field>
+        <field name="model">medical.patient</field>
+        <field name="inherit_id" ref="basic_hms.medical_patients_tree_view"/>
+        
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='deceased']" position="after">
+                
+                <field name="state" widget="badge"
+                decoration-success="state == 'done'" 
+                decoration-info="state == 'draft'" 
+                />
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Add salesperson in orderline-->
+<templates id="template" xml:space="preserve">
+    <t t-name="Orderline" t-inherit="point_of_sale.Orderline"
+          t-inherit-mode="extension" owl="1">
+           <xpath expr="//ul[hasclass('info-list')]" position="inside">
+              <br/>
+            <t t-if="line.employee">
+                Refer Phyiscians is:
+            <b id="variant_value" t-esc="line.employee" style="color:green"/>
+           
+                <br/>
+            </t>
+        </xpath>
+    </t>
+</templates>

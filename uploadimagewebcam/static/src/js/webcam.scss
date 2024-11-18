@@ -1,0 +1,20 @@
+.o_module_web_cam_image {
+    font-weight: bold; /* Set font weight */
+    cursor: pointer;   /* Change cursor */
+    animation: colorChange 6s infinite;
+    
+}
+
+.o_module_web_cam_image:hover {
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Define keyframes for color animation */
+@keyframes colorChange {
+    0%   { color: red; }   /* Red at 0% */
+    33%  { color: blue; }  /* Blue at 33% (2 seconds) */
+    66%  { color: green; } /* Green at 66% (4 seconds) */
+    100% { color: red; } 
+   
+
+}
